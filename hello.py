@@ -576,6 +576,13 @@ user_agentlist = [
 def hello_world():
     return 'Halloooo World!'
 
+def positivenumber(a):
+  if a > 0:  
+    b= '+'+str(a)
+    a=b
+    # print(a)
+  return a
+
 @app.route('/h/<post_id>')
 def post(post_id):
     # post = get_post(post_id)
@@ -629,7 +636,7 @@ def stocks(post_id):
     print(low)
     
 
-    x = [symbol, marketprice,round(sub,2), round(changepercentage,2), previousclose, marketopen,market_day_range,volume,avg_volume,high,low]
+    x = [symbol, marketprice,positivenumber(round(sub,2)), positivenumber(round(changepercentage,2)), previousclose, marketopen,market_day_range,volume,avg_volume,low,high]
     yahoostocks = {"data" : x}
         # x = {"name": symbol_name, "price": regular_market_price, "open":round(open_price, 2), "close": previous_close , "change": round(sub,2), "change_percentage": round(changepercentage,2)}
     json_object = json.dumps(yahoostocks, indent = 4,cls=JSONEncoder) 
